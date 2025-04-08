@@ -12,6 +12,6 @@ venv\Scripts\activate
 ```
 Install dependencies
 ```
-pip install apache-flink confluent-kafka
+pip install apache-flink kafka-python faker json
 ```
 
