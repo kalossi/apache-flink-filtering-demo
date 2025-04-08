@@ -14,21 +14,20 @@ secret = config['kafka']['secret']
 admin_client = AdminClient({
     'bootstrap.servers': bootstrap_server,
     # not used on localhost
-    # 'security.protocol': 'SASL_SSL',
-    # 'sasl.mechanism': 'PLAIN',
-    # not used on localhost
-    # 'sasl.username': key,
-    # 'sasl.password': secret
+    'security.protocol': 'SASL_SSL',
+    'sasl.mechanism': 'PLAIN',
+    'sasl.username': key,
+    'sasl.password': secret
 })
 
 # Kafka Producer Configuration
 producer = Producer({
     'bootstrap.servers': bootstrap_server,
     # not used on localhost
-    # 'security.protocol': 'SASL_SSL',
-    # 'sasl.mechanism': 'PLAIN',
-    # 'sasl.username': key,
-    # 'sasl.password': secret
+    'security.protocol': 'SASL_SSL',
+    'sasl.mechanism': 'PLAIN',
+    'sasl.username': key,
+    'sasl.password': secret
 })
 
 # Target topic
