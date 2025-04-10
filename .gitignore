@@ -2,3 +2,4 @@ config.ini
 venv/
 __pycache__/
 nyc_taxi_sample.json
+tempjob*

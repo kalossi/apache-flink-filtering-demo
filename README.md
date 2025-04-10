@@ -14,4 +14,11 @@ Install dependencies
 ```
 pip install apache-flink kafka-python faker json
 ```
+# Usage
+```
+docker exec -it <container id> bash
+```
+```
+bin/sql-client.sh
+```
 
