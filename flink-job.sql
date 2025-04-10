@@ -1,12 +1,12 @@
 -- Use Flink-sql-cli to excute jobs
 -- Create a Kafka source to read data from the rides-input topic
 CREATE TABLE rides_input (
-    vendor_id INT,
-    pickup_datetime STRING,
-    dropoff_datetime STRING,
-    passenger_count INT,
+    tpep_pickup_datetime BIGINT,
+    tpep_dropoff_datetime BIGINT,
+    passenger_count DOUBLE,
     trip_distance DOUBLE,
-    fare_amount DOUBLE
+    fare_amount DOUBLE,
+    VendorID INT
 ) WITH (
     'connector' = 'kafka',
     'topic' = 'rides-input',
@@ -22,34 +22,33 @@ CREATE TABLE rides_input (
 -- Filter rides based on trip distance: short and long
 CREATE VIEW short_rides AS
 SELECT
-    vendor_id,
-    pickup_datetime,
-    dropoff_datetime,
+    tpep_pickup_datetime,
+    tpep_dropoff_datetime,
     passenger_count,
     trip_distance,
-    fare_amount
+    fare_amount,
+    VendorID
 FROM rides_input
 WHERE trip_distance > 0 AND trip_distance <= 5 AND passenger_count > 0;
 
 CREATE VIEW long_rides AS
 SELECT
-    vendor_id,
-    pickup_datetime,
-    dropoff_datetime,
+    tpep_pickup_datetime,
+    tpep_dropoff_datetime,
     passenger_count,
     trip_distance,
-    fare_amount
-FROM rides_input
+    fare_amount,
+    VendorID
 WHERE trip_distance > 5 AND passenger_count > 0;
 
 -- Create Kafka sinks for the short-rides and long-rides topics
 CREATE TABLE short_rides_output (
-    vendor_id INT,
-    pickup_datetime STRING,
-    dropoff_datetime STRING,
-    passenger_count INT,
+    tpep_pickup_datetime BIGINT,
+    tpep_dropoff_datetime BIGINT,
+    passenger_count DOUBLE,
     trip_distance DOUBLE,
-    fare_amount DOUBLE
+    fare_amount DOUBLE,
+    VendorID INT
 ) WITH (
     'connector' = 'kafka',
     'topic' = 'short-rides',
@@ -62,12 +61,12 @@ CREATE TABLE short_rides_output (
 );
 
 CREATE TABLE long_rides_output (
-    vendor_id INT,
-    pickup_datetime STRING,
-    dropoff_datetime STRING,
-    passenger_count INT,
+    tpep_pickup_datetime BIGINT,
+    tpep_dropoff_datetime BIGINT,
+    passenger_count DOUBLE,
     trip_distance DOUBLE,
-    fare_amount DOUBLE
+    fare_amount DOUBLE,
+    VendorID INTE
 ) WITH (
     'connector' = 'kafka',
     'topic' = 'long-rides',
