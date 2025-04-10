@@ -39,6 +39,7 @@ SELECT
     trip_distance,
     fare_amount,
     VendorID
+FROM rides_input
 WHERE trip_distance > 5 AND passenger_count > 0;
 
 -- Create Kafka sinks for the short-rides and long-rides topics
@@ -66,7 +67,7 @@ CREATE TABLE long_rides_output (
     passenger_count DOUBLE,
     trip_distance DOUBLE,
     fare_amount DOUBLE,
-    VendorID INTE
+    VendorID INT
 ) WITH (
     'connector' = 'kafka',
     'topic' = 'long-rides',
