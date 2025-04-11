@@ -12,7 +12,7 @@ venv\Scripts\activate
 ```
 Install dependencies
 ```
-pip install apache-flink kafka-python faker json
+pip install kafka-python json
 ```
 # Usage
 Remember to add your correct bootstrap server endpoint!!!
