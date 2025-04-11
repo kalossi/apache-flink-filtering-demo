@@ -35,4 +35,10 @@ Start the flinkSQL inside the container:
 ```
 bin/sql-client.sh
 ```
+Start your Flink jobs from sql
+
+Then produce your topic:
+```
+python produce.py
+```
 
