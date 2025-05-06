@@ -25,6 +25,13 @@ KafkaClient {
     password="api-secret";
 };
 ```
+config.ini in the root of your project is also useful in the style of:
+```
+[kafka]
+bootstrap_server=pkc-zm3p0.eu-north-1.aws.confluent.cloud:9092
+key=<API-KEY>
+secret=<API-SECRET>
+```
 ```
 docker-compose up --build -d
 ```
